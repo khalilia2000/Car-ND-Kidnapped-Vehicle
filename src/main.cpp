@@ -22,18 +22,17 @@ int main() {
 	// parameters related to grading.
 	int time_steps_before_lock_required = 100; // number of time steps before accuracy is checked by grader.
 	double max_runtime = 45; // Max allowable runtime to pass [sec]
-	double max_translation_error = 1; // Max allowable translation error to pass [m]
-	double max_yaw_error = 0.05; // Max allowable yaw error [rad]
-
-
-
+  double max_translation_error = 1; // Max allowable translation error to pass [m]
+  double max_yaw_error = 0.05; // Max allowable yaw error [rad]
+  
 	// Start timer.
 	int start = clock();
 	
 	//Set up parameters here
 	double delta_t = 0.1; // Time elapsed between measurements [sec]
 	double sensor_range = 50; // Sensor range [m]
-	
+	  
+
 	/*
 	 * Sigmas - just an estimate, usually comes from uncertainty of sensor, but
 	 * if you used fused data from multiple sensors, it's difficult to find

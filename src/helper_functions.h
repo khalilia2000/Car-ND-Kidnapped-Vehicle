@@ -7,11 +7,12 @@
 
 #ifndef HELPER_FUNCTIONS_H_
 #define HELPER_FUNCTIONS_H_
+#define _USE_MATH_DEFINES
 
 #include <sstream>
 #include <fstream>
-#include <math.h>
 #include <vector>
+#include <math.h>
 #include "map.h"
 
 /*
@@ -60,6 +61,22 @@ inline double * getError(double gt_x, double gt_y, double gt_theta, double pf_x,
 	error[2] = fabs(pf_theta - gt_theta);
 	return error;
 }
+
+
+/*
+ * Calculates the bivariate normal pdf of a point given a mean and std and assuming zero correlation
+ */
+inline double bivariate_normal(double x, double y, double mu_x, double mu_y, double sig_x, double sig_y) {
+  double arg = -((x - mu_x)*(x - mu_x) / (2 * sig_x*sig_x) + (y - mu_y)*(y - mu_y) / (2 * sig_y*sig_y));
+  double bn = exp(arg);
+  bn /= (2 * M_PI*sig_x*sig_y);
+  if (bn < 1e-6) {
+    return 1e-6;
+  } else {
+    return bn;
+  }
+}
+
 
 /* Reads map data from a file.
  * @param filename Name of file containing map data.
