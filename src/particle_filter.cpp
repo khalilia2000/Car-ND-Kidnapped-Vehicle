@@ -5,6 +5,8 @@
  *      Author: Tiffany Huang
  */
 
+#define _USE_MATH_DEFINES
+
 #include <random>
 #include <algorithm>
 #include <iostream>

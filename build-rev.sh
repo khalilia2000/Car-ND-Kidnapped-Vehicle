@@ -7,6 +7,7 @@
 #    * ./build_all.sh VERBOSE=1
 #
 # Written by Tiffany Huang, 12/14/2016
+# Revised by Ali Khalili April 16, 2017 for Windows environment
 #
 
 # Go into the directory where this bash script is contained.
@@ -15,5 +16,5 @@ cd `dirname $0`
 # Compile code.
 mkdir -p build
 cd build
-cmake ..
+cmake .. -G"Unix Makefiles"
 make -j `nproc` $*
